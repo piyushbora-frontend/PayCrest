@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayCrest - Smart Payments Made Simple</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CSS Variables ===== */
+        :root {
+            --primary-blue: #3b82f6;
+            --primary-purple: #8b5cf6;
+            --accent-cyan: #06b6d4;
+            --text-dark: #1f2937;
+            --text-gray: #6b7280;
+            --bg-white: #ffffff;
+            --bg-light: #f9fafb;
+            --bg-card: #ffffff;
+        }
+
+        /* ===== Reset & Base Styles ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-white);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ===== Animated Background ===== */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 50%, #f0f9ff 100%);
+        }
+
+        .gradient-bg {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                rgba(59, 130, 246, 0.03) 0%,
+                rgba(139, 92, 246, 0.03) 25%,
+                rgba(6, 182, 212, 0.03) 50%,
+                rgba(59, 130, 246, 0.03) 75%,
+                rgba(139, 92, 246, 0.03) 100%
+            );
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Floating Particles - Subtle */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.08), rgba(139, 92, 246, 0.05));
+            filter: blur(2px);
+            animation: floatParticle 25s infinite ease-in-out;
+        }
+
+        @keyframes floatParticle {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translate(150px, -150px) scale(1.2);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(-100px, -250px) scale(0.8);
+                opacity: 0.4;
+            }
+            75% {
+                transform: translate(-150px, -100px) scale(1.1);
+                opacity: 0.45;
+            }
+        }
+
+        /* Blob Shapes - Subtle */
+        .blob {
+            position: absolute;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.03));
+            filter: blur(60px);
+            animation: blobMove 30s infinite ease-in-out;
+            opacity: 0.6;
+        }
+
+        @keyframes blobMove {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+            33% {
+                transform: translate(300px, 200px) rotate(120deg);
+                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            }
+            66% {
+                transform: translate(-200px, 300px) rotate(240deg);
+                border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%;
+            }
+        }
+
+        /* ===== Sticky Navbar with Premium Glassmorphism ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            z-index: 1000;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.9) 50%, rgba(15, 23, 42, 0.85) 100%);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .navbar.scrolled {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.98) 50%, rgba(15, 23, 42, 0.95) 100%);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(59, 130, 246, 0.3);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+            filter: drop-shadow(0 2px 8px rgba(96, 165, 250, 0.3));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            position: relative;
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            padding: 0.5rem 1.25rem;
+            border: 2px solid transparent;
+            border-radius: 25px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            perspective: 1000px;
+            display: inline-block;
+        }
+
+        /* 3D Hover Effect on Nav Links */
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--primary-purple));
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link:hover::before {
+            display: none;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+            border-color: rgba(59, 130, 246, 0.5);
+            background: rgba(59, 130, 246, 0.2);
+            transform: translateY(-2px) translateZ(10px);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .nav-link.active {
+            color: #ffffff;
+            border-color: rgba(59, 130, 246, 0.6);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3));
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .nav-link.active::before {
+            display: none;
+        }
+
+        .cta-button {
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            border: none;
+            border-radius: 50px;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            perspective: 1000px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) translateZ(20px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .hero-heading {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+            opacity: 0;
+            animation: heroFadeInUp 1s ease-out 0.3s forwards;
+        }
+
+        .hero-heading .gradient-text {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradientText 5s ease infinite;
+            display: inline-block;
+        }
+
+        @keyframes gradientText {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes heroFadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px) translateZ(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) translateZ(0);
+            }
+        }
+
+        .hero-subtext {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            letter-spacing: 0.3px;
+            opacity: 0;
+            animation: heroFadeInUp 1s ease-out 0.6s forwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: heroFadeInUp 1s ease-out 0.9s forwards;
+        }
+
+        .btn-primary {
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            border: none;
+            border-radius: 50px;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+            perspective: 1000px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) translateZ(30px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            padding: 1rem 2.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            border-radius: 50px;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            perspective: 1000px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-5px) translateZ(30px) scale(1.05);
+            border-color: var(--primary-blue);
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        /* ===== Sections ===== */
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        /* ===== Cards with 3D Hover Effect ===== */
+        .cards-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 480px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+                padding: 1rem 0.5rem;
+            }
+
+            .card {
+                padding: 1.75rem 1.25rem;
+                border-radius: 16px;
+            }
+
+            .card h3 {
+                font-size: 1.25rem;
+            }
+
+            .card p {
+                font-size: 0.95rem;
+            }
+        }
+
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            perspective: 1000px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* 3D Tilt Effect on Cards */
+        .card:hover {
+            transform: translateY(-10px) translateZ(50px) rotateX(2deg) rotateY(2deg);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #020617 100%);
+            color: #e5e7eb;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            color: #e5e7eb;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #e5e7eb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #60a5fa;
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #60a5fa;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            perspective: 1000px;
+        }
+
+        .social-icon:hover {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            color: white;
+            transform: translateY(-5px) translateZ(20px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .social-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e5e7eb;
+        }
+
+        /* ===== Mobile Menu ===== */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 41, 59, 0.98) 100%);
+                backdrop-filter: blur(30px);
+                flex-direction: column;
+                padding: 2rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+                border-top: 1px solid rgba(59, 130, 246, 0.2);
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-heading {
+                font-size: 2.5rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1rem 0;
+            }
+
+            .card {
+                padding: 2rem 1.5rem;
+                width: 100%;
+                max-width: 100%;
+                margin: 0;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* ===== Smooth Scroll Animations ===== */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .text-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .text-animate.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-scroll-animate {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-scroll-animate.animated {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .card-scroll-animate:nth-child(1) { transition-delay: 0.1s; }
+        .card-scroll-animate:nth-child(2) { transition-delay: 0.2s; }
+        .card-scroll-animate:nth-child(3) { transition-delay: 0.3s; }
+        .card-scroll-animate:nth-child(4) { transition-delay: 0.4s; }
+
+        /* ===== Utility Classes ===== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-bg"></div>
+        <div class="blob" style="width: 600px; height: 600px; top: -300px; left: -300px; animation-delay: 0s;"></div>
+        <div class="blob" style="width: 500px; height: 500px; bottom: -200px; right: -200px; animation-delay: 8s;"></div>
+        <div class="blob" style="width: 700px; height: 700px; top: 50%; left: 50%; animation-delay: 15s;"></div>
+    </div>
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">PayCrest</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                 <li><a href="team.html" class="nav-link">Our Team</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="careers.html" class="nav-link">Careers</a></li>
+               
+            </ul>
+            <!-- <a href="contact.html" class="cta-button" style="text-decoration: none;">Get Started</a> -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-heading">
+                Smart Payments<br>
+                <span class="gradient-text">Made Simple</span>
+            </h1>
+            <p class="hero-subtext">
+                Experience the future of digital payments with lightning-fast transactions, 
+                bank-level security, and seamless integration for businesses of all sizes.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Get Started</a>
+                <a href="#about" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section animate-on-scroll" id="about">
+        <div class="container">
+            <h2 class="section-title text-animate">Why Choose PayCrest</h2>
+            <p class="section-subtitle text-animate">
+                Everything you need to streamline your payment processes and grow your business
+            </p>
+            <div class="cards-grid">
+                <div class="card card-scroll-animate" data-tilt>
+                    <div class="card-icon">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Process transactions in milliseconds with our optimized infrastructure. Real-time processing ensures your customers never wait.</p>
+                </div>
+                <div class="card card-scroll-animate" data-tilt>
+                    <div class="card-icon">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                    </div>
+                    <h3>Bank-Level Security</h3>
+                    <p>Enterprise-grade encryption and compliance with international security standards. Your data and transactions are always protected.</p>
+                </div>
+                <div class="card card-scroll-animate" data-tilt>
+                    <div class="card-icon">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Easy Integration</h3>
+                    <p>Simple APIs and comprehensive documentation. Get up and running in minutes with our developer-friendly tools and SDKs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section animate-on-scroll" id="services" style="background: var(--bg-light);">
+        <div class="container">
+            <h2 class="section-title text-animate">Our Services</h2>
+            <p class="section-subtitle text-animate">
+                Comprehensive payment solutions tailored to your business needs
+            </p>
+            <div class="cards-grid">
+                <div class="card card-scroll-animate" data-tilt>
+                    <div class="card-icon">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                            <line x1="1" y1="10" x2="23" y2="10"/>
+                        </svg>
+                    </div>
+                    <h3>Payment Processing</h3>
+                    <p>Accept payments from customers worldwide with support for multiple currencies and payment methods including cards, digital wallets, and bank transfers.</p>
+                </div>
+                <div class="card card-scroll-animate" data-tilt>
+                    <div class="card-icon">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 00-2-2h-5l-2-2H6a2 2 0 00-2 2v8a2 2 0 002 2h13a2 2 0 002-2z"/>
+                            <path d="M7 12h10"/>
+                        </svg>
+                    </div>
+                    <h3>Subscription Management</h3>
+                    <p>Automate recurring billing and subscription management with flexible plans, prorations, and seamless customer experience.</p>
+                </div>
+                <div class="card card-scroll-animate" data-tilt>
+                    <div class="card-icon">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+                        </svg>
+                    </div>
+                    <h3>Financial Analytics</h3>
+                    <p>Get real-time insights into your revenue, transactions, and customer behavior with comprehensive analytics and reporting dashboards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section animate-on-scroll" id="contact">
+        <div class="container">
+            <h2 class="section-title text-animate">Get In Touch</h2>
+            <p class="section-subtitle text-animate">
+                Ready to transform your payment experience? Let's talk.
+            </p>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="contact.html" class="btn-primary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>PayCrest</h3>
+                <p>Revolutionizing payment solutions for modern businesses. Fast, secure, and reliable payment processing that scales with your growth.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="Instagram">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Twitter">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Facebook">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="careers.html">Join Us</a></li>
+                    <li><a href="contact.html">Support</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: hello@PayCrest.com</p>
+                <p>Phone: +1 (234) 567-890</p>
+                <p>Address: 123 Business St, City, State 12345</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 PayCrest. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Minimal JavaScript -->
+    <script>
+        // ===== Navbar Scroll Effect =====
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ===== Active Link Highlighting =====
+        const navLinks = document.querySelectorAll('.nav-link');
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        
+        navLinks.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+
+        // ===== Mobile Menu Toggle =====
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinksContainer = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+        });
+
+        // ===== 3D Tilt Effect on Cards =====
+        const cards = document.querySelectorAll('.card');
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) translateZ(50px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) translateZ(0)';
+            });
+        });
+
+        // ===== 3D Tilt Effect on Nav Links =====
+        navLinks.forEach(link => {
+            link.addEventListener('mousemove', (e) => {
+                const rect = link.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const centerX = rect.width / 2;
+                const rotateY = (centerX - x) / 5;
+                
+                link.style.transform = `perspective(1000px) rotateY(${rotateY}deg) translateY(-2px) translateZ(10px)`;
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                link.style.transform = 'perspective(1000px) rotateY(0) translateY(0) translateZ(0)';
+            });
+        });
+
+        // ===== Create Floating Particles =====
+        function createParticles() {
+            const animatedBg = document.querySelector('.animated-bg');
+            const particleCount = 12;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                const size = Math.random() * 80 + 40;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 25 + 's';
+                particle.style.animationDuration = (Math.random() * 15 + 20) + 's';
+                animatedBg.appendChild(particle);
+            }
+        }
+
+        // Initialize particles on load
+        createParticles();
+
+        // ===== Smooth Scroll Animation =====
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.animate-on-scroll, .text-animate, .card-scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
