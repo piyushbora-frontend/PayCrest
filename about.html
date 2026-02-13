@@ -150,22 +150,82 @@
             color: rgba(255, 255, 255, 0.9);
             font-size: 1.5rem;
             cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        .mobile-menu-btn .hamburger-icon,
+        .mobile-menu-btn .close-icon {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn.active .hamburger-icon {
+            display: none;
+        }
+
+        .mobile-menu-btn.active .close-icon {
+            display: inline-block;
         }
 
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
-                top: 70px;
+                top: 0;
                 left: 0;
-                width: 100%;
+                width: 100vw;
+                height: 100vh;
                 background: linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 41, 59, 0.98) 100%);
                 backdrop-filter: blur(30px);
+                -webkit-backdrop-filter: blur(30px);
                 flex-direction: column;
+                justify-content: center;
+                align-items: center;
                 padding: 2rem;
                 transform: translateX(-100%);
-                transition: transform 0.3s ease;
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                 box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
-                border-top: 1px solid rgba(59, 130, 246, 0.2);
+                z-index: 999;
+                gap: 2rem;
+                overflow-y: auto;
+            }
+
+            .mobile-menu-close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: rgba(255, 255, 255, 0.1);
+                border: 2px solid rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #ffffff;
+                font-size: 28px;
+                cursor: pointer;
+                z-index: 10000;
+                transition: all 0.3s ease;
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .mobile-menu-close:hover {
+                background: rgba(255, 255, 255, 0.2);
+                border-color: rgba(255, 255, 255, 0.4);
+                transform: scale(1.1) rotate(90deg);
+            }
+
+            .nav-links.active .mobile-menu-close {
+                opacity: 1;
+                pointer-events: auto;
             }
 
             .nav-links.active {
@@ -174,6 +234,15 @@
 
             .mobile-menu-btn {
                 display: block;
+            }
+
+            .nav-link {
+                display: block;
+                width: 100%;
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+                text-align: center;
+                border-radius: 12px;
             }
 
             .cards-grid {
@@ -404,6 +473,7 @@
         <div class="nav-container">
             <div class="logo">PayCrest</div>
             <ul class="nav-links" id="navLinks">
+                <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="about.html" class="nav-link active">About</a></li>
                          <li><a href="team.html" class="nav-link">Our Team</a></li>
@@ -412,7 +482,10 @@
                 <!-- <li><a href="team.html" class="nav-link">Our Team</a></li> -->
             </ul>
             <!-- <a href="contact.html" class="cta-button" style="text-decoration: none;">Get Started</a> -->
-            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <span class="hamburger-icon">☰</span>
+                <span class="close-icon" style="display: none;">✕</span>
+            </button>
         </div>
     </nav>
 
@@ -619,10 +692,44 @@
 
         // ===== Mobile Menu Toggle =====
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
         const navLinksContainer = document.getElementById('navLinks');
         
+        function closeMobileMenu() {
+            navLinksContainer.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function openMobileMenu() {
+            navLinksContainer.classList.add('active');
+            mobileMenuBtn.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
         mobileMenuBtn.addEventListener('click', () => {
-            navLinksContainer.classList.toggle('active');
+            const isActive = navLinksContainer.classList.contains('active');
+            if (isActive) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+
+        // Close button click handler
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', () => {
+                closeMobileMenu();
+            });
+        }
+
+        // Close menu when clicking on a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    closeMobileMenu();
+                }
+            });
         });
 
         // ===== Smooth Scroll Animation =====
