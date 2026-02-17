@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Careers - PayCrest</title>
+    <title>Careers | Paycrest Global - Join Our Team</title>
+    <meta name="description" content="Join Paycrest Global and help build the future of fintech. Explore career opportunities in fintech development, blockchain, and regulatory compliance.">
+    <meta name="keywords" content="fintech careers, blockchain jobs, fintech development careers, join fintech team">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,50 +23,83 @@
             --bg-card: #ffffff;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
+        * {
+            font-family: 'Inter', sans-serif !important;
         }
 
-        /* ===== Sticky Navbar with Premium Glassmorphism ===== */
+        body {
+            font-family: 'Inter', sans-serif;
+            padding-top: 80px;
+            overflow-y: scroll;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 80px;
+            }
+        }
+
+        /* Ensure all text elements use Inter */
+        h1, h2, h3, h4, h5, h6, p, a, span, div, li, ul, ol, button, input, textarea, select, label, .text-gray-900, .text-gray-700, .text-gray-600 {
+            font-family: 'Inter', sans-serif !important;
+        }
+
+        /* ===== Sticky Navbar ===== */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 1.5rem 2rem;
+            height: 80px;
+            min-height: 80px;
+            max-height: 80px;
+            padding: 0 2rem;
             z-index: 1000;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.9) 50%, rgba(15, 23, 42, 0.85) 100%);
-            backdrop-filter: blur(30px) saturate(180%);
-            -webkit-backdrop-filter: blur(30px) saturate(180%);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+            background: #15181f; /* deep navy to complement white logo tile */
+            transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.35);
+            border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
         }
 
         .navbar.scrolled {
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.98) 50%, rgba(15, 23, 42, 0.95) 100%);
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(59, 130, 246, 0.3);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+            background: #303a63;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.45);
+            border-bottom: 1px solid rgba(15, 23, 42, 1);
         }
 
         .nav-container {
             max-width: 1400px;
+            width: 100%;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 100%;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #60a5fa, #a78bfa, #60a5fa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-            filter: drop-shadow(0 2px 8px rgba(96, 165, 250, 0.3));
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            height: 65px;
+        }
+
+        .logo img {
+            height: 65px;
+            width: auto;
+            display: block;
+        }
+
+        .logo-tagline {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(248, 250, 252, 0.9);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            white-space: nowrap;
         }
 
         .nav-links {
@@ -83,10 +118,12 @@
             padding: 0.5rem 1.25rem;
             border: 2px solid transparent;
             border-radius: 25px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
-            perspective: 1000px;
             display: inline-block;
+            line-height: 1.5;
+            min-height: 40px;
+            box-sizing: border-box;
         }
 
         /* 3D Hover Effect on Nav Links */
@@ -109,7 +146,6 @@
             color: #ffffff;
             border-color: rgba(59, 130, 246, 0.5);
             background: rgba(59, 130, 246, 0.2);
-            transform: translateY(-2px) translateZ(10px);
             box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
         }
 
@@ -172,6 +208,11 @@
 
         .mobile-menu-btn.active .close-icon {
             display: inline-block;
+        }
+
+        /* Hide close button on desktop */
+        .mobile-menu-close {
+            display: none;
         }
 
         @media (max-width: 768px) {
@@ -368,7 +409,7 @@
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
             gap: 3rem;
             margin-bottom: 3rem;
         }
@@ -380,9 +421,36 @@
             margin-bottom: 1rem;
         }
 
+        .footer-section h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+        }
+
         .footer-section p {
             color: #e5e7eb;
             line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.75rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-tagline {
+            color: #60a5fa;
+            font-weight: 600;
+            font-size: 0.95rem;
             margin-bottom: 1rem;
         }
 
@@ -398,6 +466,7 @@
             color: #e5e7eb;
             text-decoration: none;
             transition: all 0.3s ease;
+            font-size: 0.95rem;
         }
 
         .footer-links a:hover {
@@ -405,11 +474,34 @@
             transform: translateX(5px);
         }
 
+        .footer-contact-info {
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-contact-info strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .footer-hours {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
         .social-icons {
             display: flex;
             gap: 1rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
+
+        .footer-logo img {
+            height: 60px;
+            width: auto;
+            display: block;
+        }
+
 
         .social-icon {
             width: 40px;
@@ -422,13 +514,12 @@
             color: #60a5fa;
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            perspective: 1000px;
         }
 
         .social-icon:hover {
             background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
             color: white;
-            transform: translateY(-5px) translateZ(20px) scale(1.1);
+            transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
         }
 
@@ -438,10 +529,61 @@
         }
 
         .footer-bottom {
-            text-align: center;
+            max-width: 1400px;
+            margin: 0 auto;
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
             color: #e5e7eb;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-legal a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: #60a5fa;
+        }
+
+        @media (max-width: 968px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-legal {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -449,12 +591,16 @@
     <!-- Sticky Navbar -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="logo">PayCrest</div>
+            <div class="logo">
+                <img src="Paycrest logo1.png" alt="PayCrest logo">
+                <span class="logo-tagline">Technology Enabler</span>
+            </div>
             <ul class="nav-links" id="navLinks">
                 <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
-                         <li><a href="team.html" class="nav-link">Our Team</a></li>
+                <li><a href="Service.html" class="nav-link">Services</a></li>
+                         <!-- <li><a href="team.html" class="nav-link">Our Team</a></li> -->
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
                 <li><a href="careers.html" class="nav-link active">Careers</a></li>
                 <!-- <li><a href="team.html" class="nav-link">Our Team</a></li> -->
@@ -483,7 +629,7 @@
     <section class="py-20 px-4 sm:px-6 lg:px-8 animate-on-scroll">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 text-animate">Why Work at PayCrest</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 text-animate">Why Work at Paycrest Global</h2>
                 <p class="text-gray-600 text-lg text-animate">We're building something special, and we want you to be part of it</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -624,60 +770,67 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
+            <!-- Column 1: Company Info -->
             <div class="footer-section">
-                <h3>PayCrest</h3>
-                <p>Revolutionizing payment solutions for modern businesses. Fast, secure, and reliable payment processing that scales with your growth.</p>
+                <a href="index.html" class="footer-logo"><img src="Paycrest logo1.png" alt="PayCrest logo"></a>
+                <p class="footer-tagline">Empowering financial innovation through integrated technology solutions</p>
+                <p>Complete fintech, blockchain, and web3 solutions with compliance and marketing expertise. Serving Canada, USA, and Australia.</p>
+            </div>
+
+            <!-- Column 2: Quick Links (Company) -->
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Service.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Services (Solutions) -->
+            <div class="footer-section">
+                <h3>Solutions</h3>
+                <ul class="footer-links">
+                    <li><a href="Service.html">Fintech Development</a></li>
+                    <li><a href="Service.html">Blockchain & Web3</a></li>
+                    <li><a href="Service.html">Regulatory Compliance</a></li>
+                    <li><a href="Service.html">Marketing & Growth</a></li>
+                    <li><a href="Service.html">Web & Mobile Apps</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Contact (Get In Touch) -->
+            <div class="footer-section">
+                <h3>Get In Touch</h3>
+                <div class="footer-contact-info">
+                    <p><strong>Email:</strong> hello@paycrestglobal.com</p>
+                    <p><strong>Phone:</strong> +1 (234) 567-890</p>
+                    <p><strong>Phone (Alt):</strong> +1 (234) 567-891</p>
+                    <p class="footer-hours"><strong>Hours:</strong> Monday-Friday, 9 AM - 6 PM EST</p>
+                </div>
                 <div class="social-icons">
-                    <a href="#" class="social-icon" aria-label="Instagram">
-                        <svg fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                    </a>
                     <a href="#" class="social-icon" aria-label="LinkedIn">
                         <svg fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                         </svg>
                     </a>
                     <a href="#" class="social-icon" aria-label="Twitter">
                         <svg fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-icon" aria-label="Facebook">
-                        <svg fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                         </svg>
                     </a>
                 </div>
             </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="careers.html">Careers</a></li>
-                    <li><a href="team.html">Our Team</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Company</h3>
-                <ul class="footer-links">
-                    <li><a href="about.html">Our Story</a></li>
-                    <li><a href="careers.html">Join Us</a></li>
-                    <li><a href="contact.html">Support</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contact</h3>
-                <p>Email: hello@PayCrest.com</p>
-                <p>Phone: +1 (234) 567-890</p>
-                <p>Address: 123 Business St, City, State 12345</p>
-            </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 PayCrest. All rights reserved.</p>
+            <p>&copy; 2026 PayCrest Global Pvt Ltd. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
         </div>
     </footer>
 

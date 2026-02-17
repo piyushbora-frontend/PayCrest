@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Paycrest Global - Fintech Solutions</title>
+    <meta name="description"
+        content="Complete fintech, blockchain, and web3 solutions with regulatory compliance and marketing expertise. Serving businesses across Canada, USA, and Australia.">
+    <meta name="keywords"
+        content="fintech services, blockchain development, web3 solutions, regulatory compliance, fintech development">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ===== CSS Variables ===== */
+        :root {
+            --primary-blue: #3b82f6;
+            --primary-purple: #8b5cf6;
+            --accent-cyan: #06b6d4;
+            --text-dark: #1f2937;
+            --text-gray: #6b7280;
+            --bg-white: #ffffff;
+            --bg-light: #f9fafb;
+            --bg-card: #ffffff;
+        }
+
+        * {
+            font-family: 'Inter', sans-serif !important;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-white);
+            color: var(--text-dark);
+            padding-top: 80px;
+            overflow-y: scroll;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 80px;
+            }
+        }
+
+        /* Ensure all text elements use Inter */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        a,
+        span,
+        div,
+        li,
+        ul,
+        ol,
+        button,
+        input,
+        textarea,
+        select,
+        label {
+            font-family: 'Inter', sans-serif !important;
+        }
+
+        /* ===== Sticky Navbar ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            min-height: 80px;
+            max-height: 80px;
+            padding: 0 2rem;
+            z-index: 1000;
+            background: #15181f; /* deep navy to complement white logo tile */
+            transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.35);
+            border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .navbar.scrolled {
+            background: #303a63;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.45);
+            border-bottom: 1px solid rgba(15, 23, 42, 1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            height: 65px;
+        }
+
+        .logo img {
+            height: 65px;
+            width: auto;
+            display: block;
+        }
+
+        .logo-tagline {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(248, 250, 252, 0.9);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            position: relative;
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            padding: 0.5rem 1.25rem;
+            border: 2px solid transparent;
+            border-radius: 25px;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            display: inline-block;
+            line-height: 1.5;
+            min-height: 40px;
+            box-sizing: border-box;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+            border-color: rgba(59, 130, 246, 0.5);
+            background: rgba(59, 130, 246, 0.2);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .nav-link.active {
+            color: #ffffff;
+            border-color: rgba(59, 130, 246, 0.6);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3));
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        .mobile-menu-btn .hamburger-icon {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn .close-icon {
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn.active .hamburger-icon {
+            display: none;
+        }
+
+        .mobile-menu-btn.active .close-icon {
+            display: inline-block;
+        }
+
+        .mobile-menu-close {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 41, 59, 0.98) 100%);
+                backdrop-filter: blur(30px);
+                -webkit-backdrop-filter: blur(30px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 2rem;
+                transform: translateX(-100%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+                z-index: 999;
+                gap: 2rem;
+                overflow-y: auto;
+            }
+
+            .mobile-menu-close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: rgba(255, 255, 255, 0.1);
+                border: 2px solid rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #ffffff;
+                font-size: 28px;
+                cursor: pointer;
+                z-index: 10000;
+                transition: all 0.3s ease;
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .mobile-menu-close:hover {
+                background: rgba(255, 255, 255, 0.2);
+                border-color: rgba(255, 255, 255, 0.4);
+                transform: scale(1.1) rotate(90deg);
+            }
+
+            .nav-links.active .mobile-menu-close {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-link {
+                display: block;
+                width: 100%;
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+                text-align: center;
+                border-radius: 12px;
+            }
+        }
+
+        /* ===== Hero Section ===== */
+        .hero-section {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 50%, #f0f9ff 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            color: var(--text-dark);
+        }
+
+        .hero-title .gradient-text {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ===== Sections ===== */
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: visible;
+        }
+
+        .section.alt {
+            background: var(--bg-light);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            color: var(--text-dark);
+        }
+
+        .section-title .gradient-text {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            overflow: visible;
+        }
+
+        /* ===== Cards Grid (match Home page) ===== */
+        .cards-grid {
+            max-width: 1400px;
+            margin: 3rem auto 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem; /* >= 24px gap between cards, same as Home */
+            padding: 2rem 0;
+        }
+
+        /* Base card style cloned from Home page cards */
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            perspective: 1000px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) translateZ(50px) rotateX(2deg) rotateY(2deg);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .card ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-gray);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .card ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        /* Three Column Grid for Compliance */
+        .three-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+        }
+
+        /* Simple Text Cards – reuse Home card visual treatment */
+        .text-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .text-card:hover {
+            transform: translateY(-10px) translateZ(50px) rotateX(2deg) rotateY(2deg);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .text-card p {
+            color: #4b5563;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .text-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 0 0;
+            text-align: left;
+        }
+
+        .text-card ul li {
+            color: #4b5563;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .text-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .text-card ul li strong {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        /* Highlight Box */
+        .highlight {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 3rem 0 4rem 0;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .highlight strong {
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+
+        /* Tech Stack Section */
+        .tech-stack-section {
+            margin-top: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .tech-stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .tech-stack-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: 16px;
+            padding: 1.75rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tech-stack-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+        }
+
+        .tech-stack-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tech-stack-card p {
+            color: #4b5563;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .tech-stack-card .tech-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary-blue);
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        /* Security Info Box */
+        .security-info {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(139, 92, 246, 0.08));
+            border-left: 4px solid var(--primary-blue);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .security-info p {
+            color: #1f2937;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .security-info strong {
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        /* CTA Buttons */
+        .cta {
+            display: inline-block;
+            margin-top: 0;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+            position: relative;
+            z-index: 20; /* ensure buttons stay above cards */
+        }
+
+        .cta:hover {
+            transform: translateY(-5px) translateZ(30px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+        }
+
+        .cta-center {
+            text-align: center;
+            display: block;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 5;
+            padding-top: 2rem;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            padding: 6rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            color: #ffffff;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .final-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta.dark {
+            background: #ffffff;
+            color: var(--primary-blue);
+        }
+
+        .cta.dark:hover {
+            background: #f9fafb;
+        }
+
+        /* ===== How We Work Section ===== */
+        .how-we-work {
+            padding: 6rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .how-we-work::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .how-we-work .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .how-we-work-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            line-height: 1.2;
+        }
+
+        .gradient-text-white {
+            background: linear-gradient(135deg, #06b6d4, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .how-we-work-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .process-step {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .process-step:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(6, 182, 212, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 auto 1rem;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+        }
+
+        .process-step h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #ffffff;
+        }
+
+        .process-step p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+        }
+
+        .how-we-work-cta {
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            color: #ffffff;
+            border: none;
+        }
+
+        .how-we-work-cta:hover {
+            background: linear-gradient(135deg, #0891b2, #2563eb);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .how-we-work {
+                padding: 4rem 1.5rem;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .how-we-work-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        /* ===== Animations ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-animate {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-animate {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-animate.animated {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .text-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .text-animate.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #020617 100%);
+            color: #e5e7eb;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section p {
+            color: #e5e7eb;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.75rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-tagline {
+            color: #60a5fa;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #e5e7eb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: #60a5fa;
+            transform: translateX(5px);
+        }
+
+        .footer-contact-info {
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-contact-info strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .footer-hours {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #60a5fa;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .social-icon:hover {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .social-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            color: #e5e7eb;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            width: auto;
+            display: block;
+        }
+
+
+        .footer-legal a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: #60a5fa;
+        }
+
+        @media (max-width: 968px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-legal {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 4rem 1rem;
+                overflow: visible;
+            }
+
+            .cards-grid,
+            .three-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin-bottom: 3rem;
+                padding-bottom: 1.5rem;
+            }
+
+            .card {
+                padding: 2rem 1.5rem;
+            }
+
+            .hero-section {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .cta-center {
+                margin-top: 1.5rem;
+                padding-top: 1.5rem;
+            }
+
+            .tech-stack-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+
+            .tech-stack-section {
+                margin-top: 3rem;
+                margin-bottom: 2rem;
+            }
+
+            .security-info {
+                padding: 1.5rem;
+                margin: 2rem 0;
+            }
+
+            .security-info p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sticky Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="Paycrest logo1.png" alt="PayCrest logo">
+                <span class="logo-tagline">Technology Enabler</span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="Service.html" class="nav-link active">Services</a></li>
+                <!-- <li><a href="team.html" class="nav-link">Our Team</a></li> -->
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="careers.html" class="nav-link">Careers</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <span class="hamburger-icon">☰</span>
+                <span class="close-icon" style="display: none;">✕</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section hero-animate">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Solutions That Scale<span class="gradient-text">Your Vision</span>
+            </h1>
+            <p class="hero-subtitle">
+                The fintech landscape demands more than great code - it requires regulatory expertise and strategic
+                vision. We
+                deliver comprehensive solutions for every stage of your product journey, from initial concept to market
+                domination.
+            </p>
+        </div>
+        <!-- Visual: Abstract tech/fintech imagery  -->
+    </section>
+
+    <!-- Fintech Product Development -->
+    <section class="section animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title text-animate">Fintech Product <span class="gradient-text">Development</span></h2>
+            <p class="section-subtitle text-animate">
+                Build secure, scalable financial products that meet industry standards and exceed user expectations. Our
+                engineering team has deep expertise in payment systems, lending platforms, banking infrastructure, and
+                financial
+                data analytics
+            </p>
+            <div class="cards-grid">
+                <div class="card card-animate">
+                    <h3>Digital Banking Platforms</h3>
+                    <ul>
+                        <li>Core banking systems</li>
+                        <li>Mobile banking apps</li>
+                        <li>Account management</li>
+                        <li>Multi-currency support</li>
+                    </ul>
+                </div>
+                <div class="card card-animate">
+                    <h3>Payment Gateways</h3>
+                    <ul>
+                        <li>Custom processors</li>
+                        <li>Merchant solutions</li>
+                        <li>Payment orchestration</li>
+                        <li>Settlement systems</li>
+                    </ul>
+                </div>
+                <div class="card card-animate">
+                    <h3>P2P Payments</h3>
+                    <ul>
+                        <li>Instant transfers</li>
+                        <li>Split payments</li>
+                        <li>QR code payments</li>
+                        <li>Social payments</li>
+                    </ul>
+                </div>
+                <div class="card card-animate">
+                    <h3>Lending Platforms</h3>
+                    <ul>
+                        <li>Personal & business loans</li>
+                        <li>Credit scoring</li>
+                        <li>Automated underwriting</li>
+                        <li>Loan management</li>
+                    </ul>
+                </div>
+                <div class="card card-animate">
+                    <h3>Personal Finance Tools</h3>
+                    <ul>
+                        <li>Budgeting apps</li>
+                        <li>Expense tracking</li>
+                        <li>Financial planning</li>
+                        <li>Goal-based savings</li>
+                    </ul>
+                </div>
+                <div class="card card-animate">
+                    <h3>Wealth Management</h3>
+                    <ul>
+                        <li>Portfolio management</li>
+                        <li>Robo-advisory</li>
+                        <li>Investment tracking</li>
+                        <li>Tax optimization</li>
+                    </ul>
+                </div>
+                <div class="card card-animate">
+                    <h3>Open Banking APIs</h3>
+                    <ul>
+                        <li>Account aggregation</li>
+                        <li>Payment initiation</li>
+                        <li>Financial APIs</li>
+                        <li>3rd-party integration</li>
+                    </ul>
+                </div>
+                <div class="card card-animate">
+                    <h3>Transaction Monitoring</h3>
+                    <ul>
+                        <li>Fraud detection</li>
+                        <li>AML screening</li>
+                        <li>Real-time alerts</li>
+                        <li>Compliance reports</li>
+                    </ul>
+                </div>
+            </div>
+             <!-- Tech Stack Section -->
+            <div class="tech-stack-section">
+                <h3 class="section-title text-animate"
+                    style="font-size: 1.75rem; margin-bottom: 2rem; text-align: center;">
+                    Technology   <span class="gradient-text">Stack: </span>
+                </h3>
+                <div class="tech-stack-grid">
+                    <div class="tech-stack-card">
+                        <h3>Frontend</h3>
+                        <div class="tech-items">
+                            <span class="tech-tag"> React</span>
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Angular</span>
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Flutter</span>
+                        </div>
+                    </div>
+                    <div class="tech-stack-card">
+                        <h3>Backend</h3>
+                        <div class="tech-items">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Go</span>
+                        </div>
+                    </div>
+                    <!-- <div class="tech-stack-card">
+                        <h3>Architecture</h3>
+                        <div class="tech-items">
+                            <span class="tech-tag">Microservices</span>
+                            <span class="tech-tag">Event-driven</span>
+                            <span class="tech-tag">API-first design</span>
+                        </div>
+                    </div> -->
+                    <div class="tech-stack-card">
+                        <h3>Cloud</h3>
+                        <div class="tech-items">
+                            <span class="tech-tag">AWS</span>  
+                            <span class="tech-tag">Azure</span>
+                            <span class="tech-tag">Google Cloud Platform</span>
+                            <!-- <span class="tech-tag">SPL Tokens</span> -->
+                        </div>
+                    </div>
+                     <div class="tech-stack-card">
+                        <h3>Database</h3>
+                        <div class="tech-items">
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag"> MongoDB</span>
+                            <span class="tech-tag"> Redis</span>
+                              <span class="tech-tag">DynamoDB</span>
+                        </div>
+                    </div>
+                     <div class="tech-stack-card">    
+                        <h3> Security</h3>
+                        <div class="tech-items">
+                            <span class="tech-tag">OAuth 2.0</span>
+                            <span class="tech-tag">JWT</span>
+                            <span class="tech-tag">encryption at rest/transit </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cta-center">
+                <a href="contact.html" class="cta">Discuss Your Product Idea →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blockchain & Web3 Development -->
+    <section class="section animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title text-animate">Blockchain & <span class="gradient-text">Web3 Development </span>
+            </h2>
+            <p class="section-subtitle text-animate">
+                Create transparent, secure decentralized financial solutions with proven expertise across multiple
+                blockchain
+                ecosystems. From smart contract development to full-scale DeFi protocol launches, we bring technical
+                excellence
+                and security-first mindset to every project
+            </p>
+            <div class="cards-grid">
+                <div class="card card-animate">
+                    <h3>Smart Contracts & Auditing </h3>
+                    <ul>
+                        <li>Custom smart contract development </li>
+                        <li>Security audits & testing </li>
+                        <li>Gas optimization </li>
+                        <li>Formal verification </li>
+                    </ul>
+                </div>
+                <div class="card card-animate">
+                    <h3>DeFi Protocols</h3>
+                    <ul>
+                        <li>Lending & borrowing platforms </li>
+                        <li>Automated market makers (AMMs) </li>
+                        <li>Yield aggregators </li>
+                        <li>Staking mechanisms </li>
+                    </ul>
+                </div>
+                <div class="card card-animate">
+                    <h3>NFT Marketplaces</h3>
+                    <ul>
+                        <li>NFT minting platforms </li>
+                        <li>Marketplace development </li>
+                        <li>Royalty systems </li>
+                        <li>Multi-chain support </li>
+                    </ul>
+                </div>
+                <div class="card card-animate">
+                    <h3>Crypto Wallets</h3>
+                    <ul>
+                        <li>Custodial wallets</li>
+                        <li>Non-custodial wallets </li>
+                        <li>Multi-signature wallets </li>
+                        <li>Hardware wallet integration </li>
+                    </ul>
+                </div>
+                <div class="card card-animate">
+                    <h3>DAO Governance Systems </h3>
+                    <ul>
+                        <li>Voting mechanisms </li>
+                        <li>Proposal systems </li>
+                        <li>Treasury management </li>
+                        <li>Token-based governance </li>
+                    </ul>
+                </div>
+                <div class="card card-animate">
+                    <h3>Layer 2 Solutions</h3>
+                    <ul>
+                        <li>Rollup implementation </li>
+                        <li>Sidechain development </li>
+                        <li>Scaling solutions </li>
+                        <li>State channels </li>
+                    </ul>
+                </div>
+                <div class="card card-animate">
+                    <h3>Cross-Chain Bridges </h3>
+                    <ul>
+                        <li>Asset bridging </li>
+                        <li>Cross-chain messaging </li>
+                        <li>Liquidity management </li>
+                        <li>Multi-chain architecture </li>
+                    </ul>
+                </div>
+                <div class="card card-animate">
+                    <h3>Enterprise Blockchain </h3>
+                    <ul>
+                        <li>Private blockchain networks </li>
+                        <li>Hyperledger solutions </li>
+                        <li>Supply chain tracking </li>
+                        <li>Document verification </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tech Stack Section -->
+            <div class="tech-stack-section">
+                <h3 class="section-title text-animate"
+                    style="font-size: 1.75rem; margin-bottom: 2rem; text-align: center;">
+                    Blockchain <span class="gradient-text">Expertise: </span>
+                </h3>
+                <div class="tech-stack-grid">
+                    <div class="tech-stack-card">
+                        <h3>Networks</h3>
+                        <div class="tech-items">
+                            <span class="tech-tag">Ethereum</span>
+                            <span class="tech-tag">Solana</span>
+                            <span class="tech-tag">Polygon</span>
+                            <span class="tech-tag">BSC</span>
+                            <span class="tech-tag">Hyperledger</span>
+                        </div>
+                    </div>
+                    <div class="tech-stack-card">
+                        <h3>Languages</h3>
+                        <div class="tech-items">
+                            <span class="tech-tag">Solidity</span>
+                            <span class="tech-tag">Rust</span>
+                            <span class="tech-tag">Move</span>
+                            <span class="tech-tag">Go</span>
+                        </div>
+                    </div>
+                    <div class="tech-stack-card">
+                        <h3>Frameworks</h3>
+                        <div class="tech-items">
+                            <span class="tech-tag">Hardhat</span>
+                            <span class="tech-tag">Truffle</span>
+                            <span class="tech-tag">Anchor</span>
+                            <span class="tech-tag">Web3.js</span>
+                            <span class="tech-tag">Ethers.js</span>
+                        </div>
+                    </div>
+                    <div class="tech-stack-card">
+                        <h3>Standards</h3>
+                        <div class="tech-items">
+                            <span class="tech-tag">ERC-20</span>
+                            <span class="tech-tag">ERC-721</span>
+                            <span class="tech-tag">ERC-1155</span>
+                            <span class="tech-tag">SPL Tokens</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Info -->
+            <div class="security-info">
+                <p>
+                    <strong>Security First:</strong> Every smart contract undergoes rigorous testing, formal
+                    verification, and
+                    third-party audits before deployment. We've secured over <strong>$50M+</strong> in total value
+                    locked (TVL)
+                    across our deployed protocols with <strong>zero security incidents</strong>.
+                </p>
+            </div>
+
+            <div class="cta-center">
+                <a href="contact.html" class="cta">Launch Your Web3 Project →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regulatory Compliance -->
+    <section class="section animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title text-animate">Regulatory Compliance & <span class="gradient-text">Licensing
+                    Support</span></h2>
+            <p class="section-subtitle text-animate">
+                Navigate complex regulations across multiple jurisdictions with confidence. Our compliance experts have
+                successfully guided dozens of fintech and crypto companies through licensing, registration, and ongoing
+                compliance requirements in North America and Australia."
+            </p>
+            <div class="three-grid">
+                <div class="card card-animate">
+                    <h3>🇨🇦 Canada</h3>
+                    <div style="margin-top: 1.5rem;">
+                        <h4
+                            style="font-size: 1.1rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 0.75rem; margin-top: 1rem;">
+                            1. FINTRAC Registration & Compliance</h4>
+                        <ul>
+                            <li>Money Services Business (MSB) registration</li>
+                            <li>AML/ATF program implementation</li>
+                            <li>Suspicious transaction reporting</li>
+                            <li>Record-keeping requirements</li>
+                        </ul>
+
+                        <h4
+                            style="font-size: 1.1rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 0.75rem; margin-top: 1.5rem;">
+                            2. Provincial Securities Regulations</h4>
+                        <ul>
+                            <li>Provincial compliance assessment</li>
+                            <li>Prospectus exemptions</li>
+                            <li>Investment fund regulations</li>
+                        </ul>
+
+                        <h4
+                            style="font-size: 1.1rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 0.75rem; margin-top: 1.5rem;">
+                            3. Open Banking Framework</h4>
+                        <ul>
+                            <li>FINTRAC compliance for account aggregation</li>
+                            <li>Consumer data rights</li>
+                            <li>API security standards</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card card-animate">
+                    <h3>🇺🇸 United States</h3>
+                    <div style="margin-top: 1.5rem;">
+                        <h4
+                            style="font-size: 1.1rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 0.75rem; margin-top: 1rem;">
+                            1. FinCEN Compliance </h4>
+                        <ul>
+                            <li>MSB registration /li>
+                            <li>SAR/CTR filing </li>
+                            <li>BSA/AML programs </li>
+                            <li>OFAC sanctions screening </li>
+                        </ul>
+
+                        <h4
+                            style="font-size: 1.1rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 0.75rem; margin-top: 1.5rem;">
+                            2. State Money Transmitter Licensing </h4>
+                        <ul>
+                            <!-- <l1>Multi-state licensing strategy</l1> -->
+                            <li>Application preparation & filing </li>
+                            <li>Net worth & bonding requirements </li>
+                            <li>Ongoing compliance & renewals </li>
+                           
+                        </ul>
+
+                        <h4
+                            style="font-size: 1.1rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 0.75rem; margin-top: 1.5rem;">
+                            3. SEC & CFTC Regulations </h4>
+                        <ul>
+                            <li>Securities classification analysis </li>
+                            <li>Investment advisor registration </li>
+                            <li>Commodity regulations </li>
+                            <li>Token offering compliance </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card card-animate">
+                    <h3>🇦🇺 Australia</h3>
+                    <div style="margin-top: 1.5rem;">
+                        <h4
+                            style="font-size: 1.1rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 0.75rem; margin-top: 1rem;">
+                            1. AUSTRAC Compliance </h4>
+                        <ul>
+                            <li>Digital Currency Exchange registration li>
+                            <li>Remittance service registration </li>
+                            <li>AML/CTF program design </li>
+                            <li>Transaction reporting </li>
+                        </ul>
+
+                        <h4
+                            style="font-size: 1.1rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 0.75rem; margin-top: 1.5rem;">
+                            2. ASIC Regulations </h4>
+                        <ul>
+                            <!-- <l1>Australian Financial Services License </l1> -->
+                            <li>Consumer credit licensing </li>
+                            <li>Market integrity rules </li>
+                            <li>Product disclosure requirements </li>
+                        </ul>
+
+                        <h4
+                            style="font-size: 1.1rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 0.75rem; margin-top: 1.5rem;">
+                            3. Privacy & Consumer Protection </h4>
+                        <ul>
+                            <li>Privacy Act compliance </li>
+                            <li>Australian Consumer Law </li>
+                            <li>Notifiable data breaches </li>
+                            <li>Complaints handling </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Compliance Services -->
+            <div style="margin-top: 5rem;">
+                <h3 class="section-title text-animate"
+                    style="font-size: 1.75rem; margin-bottom: 2rem; text-align: center;">
+                    Core <span class="gradient-text">Compliance Services</span>
+                </h3>
+                <div class="cards-grid">
+                    <div class="card card-animate">
+                        <h3>KYC/AML Integration</h3>
+                        <ul>
+                            <li>Identity verification systems</li>
+                            <li>Risk scoring & assessment</li>
+                            <li>Enhanced due diligence</li>
+                            <li>Ongoing monitoring</li>
+                            <li>Watchlist screening</li>
+                        </ul>
+                    </div>
+                    <div class="card card-animate">
+                        <h3>GDPR & Data Privacy</h3>
+                        <ul>
+                            <li>Data protection impact assessments</li>
+                            <li>Privacy policy development</li>
+                            <li>Consent management</li>
+                            <li>Data subject rights implementation</li>
+                            <li>Cross-border data transfer compliance</li>
+                        </ul>
+                    </div>
+                    <div class="card card-animate">
+                        <h3>PCI DSS Certification</h3>
+                        <ul>
+                            <li>Security assessment & gap analysis</li>
+                            <li>Certification roadmap</li>
+                            <li>Implementation support</li>
+                            <li>Ongoing compliance maintenance</li>
+                        </ul>
+                    </div>
+                    <!-- <div class="card card-animate">
+                        <h3>Consumer Protection Frameworks</h3>
+                        <ul>
+                            <li>Fair lending compliance</li>
+                            <li>Truth in lending disclosures</li>
+                            <li>Consumer complaint handling</li>
+                            <li>Transparency requirements</li>
+                        </ul>
+                    </div> -->
+                    <div class="card card-animate">
+                        <h3>Transaction Monitoring</h3>
+                        <ul>
+                            <li>Real-time monitoring systems</li>
+                            <li>Suspicious activity detection</li>
+                            <li>Automated reporting</li>
+                            <li>Case management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-center">
+                <a href="contact.html" class="cta">Book Compliance Consultation →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketing & Growth Strategy -->
+    <section class="section alt animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title text-animate">Marketing & <span class="gradient-text">Growth Strategy</span></h2>
+            <p class="section-subtitle text-animate">
+                Position your product for maximum market impact. Technology alone doesn't guarantee success - you need
+                strategic positioning, compelling messaging, and data-driven growth execution. Our marketing team has
+                launched fintech products that have acquired millions of users.
+            </p>
+            <div class="cards-grid">
+                <!-- Go-to-Market Strategy -->
+                <div class="text-card card-animate">
+                    <h3>Go-to-Market Strategy</h3>
+                    <ul>
+                        <li>Market analysis & opportunity assessment</li>
+                        <li>Competitive positioning</li>
+                        <li>Launch timeline & milestones</li>
+                        <li>Channel strategy</li>
+                        <li>Pricing & packaging</li>
+                        <li>Partnership identification</li>
+                    </ul>
+                </div>
+
+                <!-- Brand Positioning & Messaging -->
+                <div class="text-card card-animate">
+                    <h3>Brand Positioning & Messaging</h3>
+                    <ul>
+                        <li>Brand identity development</li>
+                        <li>Value proposition refinement</li>
+                        <li>Messaging framework</li>
+                        <li>Brand voice & tone</li>
+                        <li>Visual identity guidelines</li>
+                        <li>Competitive differentiation</li>
+                    </ul>
+                </div>
+
+                <!-- Digital Marketing -->
+                <div class="text-card card-animate">
+                    <h3>Digital Marketing</h3>
+                    <ul>
+                        <li><strong>SEO:</strong> Keyword research, technical SEO, content optimization, link building</li>
+                        <li><strong>PPC:</strong> Google Ads, social media advertising, retargeting campaigns</li>
+                        <li><strong>Social Media:</strong> Strategy, content creation, community management, influencer partnerships</li>
+                        <li><strong>Email Marketing:</strong> Campaign strategy, automation, segmentation, retention</li>
+                    </ul>
+                </div>
+
+
+                <!-- Community Building -->
+                <div class="text-card card-animate">
+                    <h3>Community Building</h3>
+                    <ul>
+                        <li>Community strategy & platforms</li>
+                        <li>User engagement programs</li>
+                        <li>Ambassador programs</li>
+                        <li>Events & meetups</li>
+                        <li>Discord / Telegram management (Web3)</li>
+                        <li>Customer advocacy</li>
+                    </ul>
+                </div>
+
+                <!-- PR & Media -->
+                <!-- <div class="text-card card-animate">
+                    <h3>PR & Media Relations</h3>
+                    <ul>
+                        <li>Media strategy & outreach</li>
+                        <li>Press release distribution</li>
+                        <li>Journalist relationships</li>
+                        <li>Interview preparation</li>
+                        <li>Crisis communication</li>
+                        <li>Industry awards & recognition</li>
+                    </ul>
+                </div> -->
+
+                <!-- Performance Analytics -->
+                <!-- <div class="text-card card-animate">
+                    <h3>Performance Analytics</h3>
+                    <ul>
+                        <li>KPI definition & tracking</li>
+                        <li>Dashboard development</li>
+                        <li>A/B testing & optimization</li>
+                        <li>Attribution modeling</li>
+                        <li>Cohort analysis</li>
+                        <li>Growth experimentation</li>
+                    </ul>
+                </div> -->
+            </div>
+            <div class="cta-center">
+                <a href="contact.html" class="cta">Grow Your User Base →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Web & Mobile Development -->
+    <section class="section animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title text-animate">Web & <span class="gradient-text">Mobile Development</span></h2>
+            <p class="section-subtitle text-animate">
+                Create seamless digital experiences that drive engagement and conversion. Whether you need a responsive web application, native mobile apps, or cross-platform solutions, we deliver pixel-perfect interfaces backed by robust architecture.
+            </p>
+            <div class="cards-grid">
+                <!-- Responsive Web Applications -->
+                <div class="text-card card-animate">
+                    <h3>Responsive Web Applications</h3>
+                    <ul>
+                        <li>Progressive Web Apps (PWAs)</li>
+                        <li>Single Page Applications (SPAs)</li>
+                        <li>Admin dashboards & portals</li>
+                        <li>Customer-facing platforms</li>
+                        <li>Internal tools & CRMs</li>
+                    </ul>
+                </div>
+
+                <!-- Native Mobile Applications -->
+                <div class="text-card card-animate">
+                    <h3>Native Mobile Applications</h3>
+                    <ul>
+                        <li><strong>iOS:</strong> Swift/SwiftUI development</li>
+                        <li><strong>Android:</strong> Kotlin/Java development</li>
+                        <li>Optimized performance</li>
+                        <li>Platform-specific features</li>
+                        <li>App Store optimization</li>
+                    </ul>
+                </div>
+
+                <!-- Cross-Platform Solutions -->
+                <div class="text-card card-animate">
+                    <h3>Cross-Platform Solutions</h3>
+                    <ul>
+                        <li>React Native applications</li>
+                        <li>Flutter applications</li>
+                        <li>Code reuse & efficiency</li>
+                        <li>Faster time to market</li>
+                        <li>Unified user experience</li>
+                    </ul>
+                </div>
+
+                <!-- UI/UX Design -->
+                <div class="text-card card-animate">
+                    <h3>UI/UX Design</h3>
+                    <ul>
+                        <li>User research & personas</li>
+                        <li>Wireframing & prototyping</li>
+                        <li>Visual design & branding</li>
+                        <li>Interaction design</li>
+                        <li>Usability testing</li>
+                        <li>Design system creation</li>
+                    </ul>
+                </div>
+
+                <!-- API Integration & Development -->
+                <div class="text-card card-animate">
+                    <h3>API Integration & Development</h3>
+                    <ul>
+                        <li>RESTful API design</li>
+                        <li>GraphQL implementation</li>
+                        <li>Third-party integrations</li>
+                        <li>Webhook systems</li>
+                        <li>API documentation</li>
+                    </ul>
+                </div>
+
+                <!-- Technical Capabilities -->
+                <div class="text-card card-animate">
+                    <h3>Technical Capabilities</h3>
+                    <ul>
+                        <li>Real-time features (WebSockets, Server-Sent Events)</li>
+                        <li>Offline-first architecture</li>
+                        <li>Push notifications</li>
+                        <li>Biometric authentication</li>
+                        <li>Payment gateway integration</li>
+                        <li>Analytics & tracking integration</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="cta-center">
+                <a href="contact.html" class="cta">Build Your Application →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Work Section -->
+    <section class="how-we-work animate-on-scroll">
+        <div class="container">
+            <h2 class="how-we-work-title">How We Work: <span class="gradient-text-white">Discovery → Design → Development → Compliance → Launch</span></h2>
+            <!-- <p class="how-we-work-subtitle">
+             [Same content as Home Page Section 1.6, or abbreviated version with link to full process] 
+            </p> -->
+            <a href="contact.html" class="cta how-we-work-cta">Start Your Project →</a>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta animate-on-scroll">
+        <div class="container">
+            <h2>Let's Build Your Next Big Idea</h2>
+            <p>Every successful  product starts with a conversation.</p>
+            <a href="contact.html" class="cta dark">Start Your Project →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Column 1: Company Info -->
+            <div class="footer-section">
+                 <a href="index.html" class="footer-logo"><img src="Paycrest logo1.png" alt="PayCrest logo"></a>
+                <p class="footer-tagline">Empowering financial innovation through integrated technology solutions</p>
+                <p>Complete fintech, blockchain, and web3 solutions with compliance and marketing expertise. Serving Canada, USA, and Australia.</p>
+            </div>
+
+            <!-- Column 2: Quick Links (Company) -->
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Service.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Services (Solutions) -->
+            <div class="footer-section">
+                <h3>Solutions</h3>
+                <ul class="footer-links">
+                    <li><a href="Service.html">Fintech Development</a></li>
+                    <li><a href="Service.html">Blockchain & Web3</a></li>
+                    <li><a href="Service.html">Regulatory Compliance</a></li>
+                    <li><a href="Service.html">Marketing & Growth</a></li>
+                    <li><a href="Service.html">Web & Mobile Apps</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Contact (Get In Touch) -->
+            <div class="footer-section">
+                <h3>Get In Touch</h3>
+                <div class="footer-contact-info">
+                    <p><strong>Email:</strong> hello@paycrestglobal.com</p>
+                    <p><strong>Phone:</strong> +1 (234) 567-890</p>
+                    <p><strong>Phone (Alt):</strong> +1 (234) 567-891</p>
+                    <p class="footer-hours"><strong>Hours:</strong> Monday-Friday, 9 AM - 6 PM EST</p>
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="LinkedIn">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Twitter">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 PayCrest Global Pvt Ltd. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== Navbar Scroll Effect =====
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ===== Active Link Highlighting =====
+        const navLinks = document.querySelectorAll('.nav-link');
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+        navLinks.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+
+        // ===== Mobile Menu Toggle =====
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const navLinksContainer = document.getElementById('navLinks');
+
+        function closeMobileMenu() {
+            navLinksContainer.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function openMobileMenu() {
+            navLinksContainer.classList.add('active');
+            mobileMenuBtn.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isActive = navLinksContainer.classList.contains('active');
+            if (isActive) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+
+        // Close button click handler
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', () => {
+                closeMobileMenu();
+            });
+        }
+
+        // Close menu when clicking on a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    closeMobileMenu();
+                }
+            });
+        });
+
+        // ===== Smooth Scroll Animation =====
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.animate-on-scroll, .text-animate, .card-animate').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
